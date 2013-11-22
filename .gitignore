@@ -5,5 +5,5 @@ target/
 .classpath/
 .DS_Store/
 .project/
-
+.DS_Store
 
