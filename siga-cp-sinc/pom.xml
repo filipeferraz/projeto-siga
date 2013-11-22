@@ -16,10 +16,22 @@
         <dependency>
             <groupId>jboss</groupId>
             <artifactId>jbosssx-client</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.picketbox</groupId>
             <artifactId>jbosssx-bare</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk16</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

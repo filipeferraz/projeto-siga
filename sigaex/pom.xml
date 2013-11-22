@@ -52,18 +52,203 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-bundle-minimal</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-beans</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-context</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>aopalliance</artifactId>
+                    <groupId>aopalliance</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-annotation_1.0_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jaxb-api</artifactId>
+                    <groupId>javax.xml.bind</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>wsdl4j</artifactId>
+                    <groupId>wsdl4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>xml-resolver</artifactId>
+                    <groupId>xml-resolver</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>XmlSchema</artifactId>
+                    <groupId>org.apache.ws.commons.schema</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-lang</artifactId>
+                    <groupId>commons-lang</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-activation_1.1_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>wstx-asl</artifactId>
+                    <groupId>org.codehaus.woodstox</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>neethi</artifactId>
+                    <groupId>org.apache.neethi</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jaxb-impl</artifactId>
+                    <groupId>com.sun.xml.bind</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-web</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jetty</artifactId>
+                    <groupId>org.mortbay.jetty</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jetty-util</artifactId>
+                    <groupId>org.mortbay.jetty</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>servlet-api</artifactId>
+                    <groupId>org.mortbay.jetty</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-jdk14</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-servlet_2.5_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-jms_1.1_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-jms</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-pool</artifactId>
+                    <groupId>commons-pool</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-dao</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-support</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>velocity</artifactId>
+                    <groupId>velocity</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jaxb-xjc</artifactId>
+                    <groupId>com.sun.xml.bind</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>saaj-api</artifactId>
+                    <groupId>javax.xml.soap</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jaxws-api</artifactId>
+                    <groupId>javax.xml.ws</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jdom</artifactId>
+                    <groupId>jdom</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jaxen</artifactId>
+                    <groupId>jaxen</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>xml-apis</artifactId>
+                    <groupId>xml-apis</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>saaj-impl</artifactId>
+                    <groupId>com.sun.xml.messaging.saaj</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>opensaml</artifactId>
+                    <groupId>org.opensaml</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>wss4j</artifactId>
+                    <groupId>org.apache.ws.security</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>xmlsec</artifactId>
+                    <groupId>org.apache.santuario</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>xalan</artifactId>
+                    <groupId>xalan</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>serializer</artifactId>
+                    <groupId>xalan</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>velocity-dep</artifactId>
+                    <groupId>velocity</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>bcprov-jdk15</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>nl.captcha</groupId>
             <artifactId>simplecaptcha</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
@@ -72,6 +257,7 @@
         <dependency>
             <groupId>org.directwebremoting</groupId>
             <artifactId>dwr</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -81,10 +267,81 @@
         <dependency>
             <groupId>projeto-siga</groupId>
             <artifactId>siga-cp</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jasperreports</artifactId>
+                    <groupId>jasperreports</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-collections</artifactId>
+                    <groupId>commons-collections</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-beanutils</artifactId>
+                    <groupId>commons-beanutils</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>projeto-siga</groupId>
             <artifactId>siga-libs</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ognl</artifactId>
+                    <groupId>opensymphony</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>oscore</artifactId>
+                    <groupId>opensymphony</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>freemarker</artifactId>
+                    <groupId>freemarker</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.kxml</groupId>
+            <artifactId>kxml2</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.opensymphony</groupId>
+            <artifactId>webwork</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>freemarker</artifactId>
+                    <groupId>freemarker</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>projeto-siga</groupId>
