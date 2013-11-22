@@ -36,6 +36,7 @@
         <module>siga-cp-sinc</module>
         <module>siga-play-module</module>
         <module>siga-play-proxy</module>
+        <module>siga-cd-aut</module>
     </modules>
 
     <build>
