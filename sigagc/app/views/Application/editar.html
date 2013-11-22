@@ -1,0 +1,240 @@
+#{extends 'main.html' /} #{set title:'Edição de Tópico de Informação' /}
+
+<div class="gt-bd gt-cols clearfix">
+	<div class="gt-content clearfix">
+		<h2>
+			<span id="codigoInf">${informacao?.sigla}</span>
+		</h2>
+
+		<div class="gt-form gt-content-box">
+			<form id="frm" action="@{Application.gravar}">
+				<input type="hidden" name="informacao.id" value="${informacao?.id}" />
+				<input type="hidden" name="origem" value="${origem}" /> 
+				*{
+				<div class="gt-form-row gt-width-100">
+					<label>Tópico pai:</label> #{selecao tipo:'pessoa',
+					nome:'informacao.informacaoPai', value:informacao?.informacaoPai /}
+					<span style="color: red">#{error 'informacao.informacaoPai'
+						/}</span>
+				</div>
+				}*
+				<div class="gt-form-row gt-width-100">
+					<div class="gt-left-col gt-width-25" style="margin-right: 2em">
+						<label>Tipo</label>#{select name:'informacao.tipo',
+						items:tiposInformacao, labelProperty:'nome', valueProperty:'id',
+						value:informacao.tipo?.id} #{/select}
+					</div>
+					<div class="gt-left-col gt-width-25" style="padding-left: 2em">
+						<label>Acesso</label>#{select name:'informacao.acesso',
+						items:acessos, labelProperty:'nome', valueProperty:'id',
+						value:informacao.acesso?.id} #{/select}
+
+					</div>
+					*{
+					<div class="gt-left-col gt-width-25">
+						<label>Data Início</label><input type="text" name="dtDocString"
+							size="10" value="" id="frm_dtDocString"
+							onblur="javascript:verifica_data(this, true);">
+					</div>
+					<div class="gt-left-col gt-width-25">
+						<label>Data Fim</label><input type="text" name="dtDocString"
+							size="10" value="" id="frm_dtDocString"
+							onblur="javascript:verifica_data(this, true);">
+					</div>
+					}*
+
+				</div>
+				<div class="gt-form-row gt-width-100">
+					<label>Responsável</label> #{selecao tipo:'pessoa',
+					nome:'informacao.autor', value:informacao.autor /} <span
+						style="color: red">#{error 'informacao.autor' /}</span>
+				</div>
+				<div class="gt-form-row gt-width-100">
+					<label>Lotação Responsável</label> #{selecao tipo:'lotacao',
+					nome:'informacao.lotacao', value:informacao.lotacao /} <span
+						style="color: red">#{error 'informacao.lotacao' /}</span>
+				</div>
+
+
+				<div class="gt-form-row gt-width-100">
+					<label>Título</label> <input type="text" name="titulo"
+						value="${titulo}" class="gt-form-text" /><span style="color: red">#{error
+						'titulo' /}</span>
+				</div>
+
+				<div class="gt-form-row gt-width-100">
+					<label>Texto</label>
+					<textarea name="conteudo" cols="80" rows="20"
+						class="gt-form-textarea">${conteudo}</textarea>
+					<span style="color: red">#{error 'conteudo' /}</span>
+				</div>
+
+				<div class="gt-form-row gt-width-100">
+					<label>Classificação</label>
+					#{if classificacao != null}
+						<textarea name="classificacao" class="gt-form-text" readonly>${classificacao}</textarea> 
+					#{/if}
+					#{else}
+						<p>Esse conhecimento ainda não possui uma classificação</p>
+					#{/else}
+					<span style="color: red">#{error 'classificacao' /}</span>
+				</div>
+
+				<div class="gt-form-row gt-width-100">
+					<input type="submit" value="Gravar"
+						class="gt-btn-medium gt-btn-left" />
+					<p class="gt-cancel">
+						ou <a href="">cancelar alterações</a> #{if informacao != null &&
+						informacao.id != null && informacao.id != 0} ou <a
+							href="@{Application.exibir(informacao?.sigla)}">exibir
+							movimentações</a> #{/if}
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="gt-sidebar">
+		<!-- Sidebar Content -->
+		<div class="gt-sidebar-content">
+	<script>				
+	function insertTextAtCursor(el, text) {
+	    var val = el.value, endIndex, range;
+	    if (typeof el.selectionStart != "undefined" && typeof el.selectionEnd != "undefined") {
+	        endIndex = el.selectionEnd;
+	        el.value = val.slice(0, endIndex) + text + val.slice(endIndex);
+	        el.selectionStart = el.selectionEnd = endIndex + text.length;
+	    } else if (typeof document.selection != "undefined" && typeof document.selection.createRange != "undefined") {
+	        el.focus();
+	        range = document.selection.createRange();
+	        range.collapse(false);
+	        range.text = text;
+	        range.select();
+	    }
+	}
+	$(document).ready(function(){
+		  $("textarea[readonly]").css({"background-color":"transparent","border":"none","overflow":"auto","height":"50px","resize":"none"});
+	});
+	</script>
+
+			<h3>Informações sobre o Preenchimento</h3>
+			<p>O campo "Título" sempre será acessível, independente do contro
+				de acesso selecionado.</p>
+
+			#{if informacao.contemArquivos}
+			<h3 style="padding-top: 1em">Incluir Imagens ou Arquivos</h3>
+			<p>Clique em uma imagem/arquivo abaixo para incluir uma
+				referência no texto.</p>
+			#{list items:informacao.movs, as:'m'} #{if m.tipo.id ==
+			models.GcTipoMovimentacao.TIPO_MOVIMENTACAO_ANEXAR_ARQUIVO}
+			<p>
+				<img src="/siga/css/famfamfam/icons/${m.arq.icon}.png" />
+				<a
+					href="javascript: var frm = document.getElementById('frm'); insertTextAtCursor(frm.conteudo, '#{if m.arq.image}{{${m.arq.id}|${m.arq.titulo}}}#{/if}#{else}[[${m.arq.id}|${m.arq.titulo}]]#{/else}');">${m.arq.titulo}</a>
+			</p>
+			#{/if} #{/list} #{/if}
+
+			<h3 style="padding-top: 1em">Opções de Formatação</h3>
+			<p>
+				O conteúdo do campo "Texto" pode ser receber <a
+					href="http://www.wikicreole.org"> marcações especiais</a>, clique <a
+					href="javascript: $('#cheatsheet').show();">aqui</a> para
+				visualizar as opções disponíveis.
+			</p>
+			<div id="cheatsheet" style="display: none;">
+				<table class="side-bar-light-table">
+					<tbody>
+						<tr>
+							<td>//itálico//</td>
+							<td class="arrow">→</td>
+							<td><em>itálico</em></td>
+						</tr>
+						<tr>
+							<td>**negrito**</td>
+							<td class="arrow">→</td>
+							<td><strong>negrito</strong></td>
+						</tr>
+
+						<tr>
+							<td>* Lista não numerada<br>* Segundo item<br>**
+								Sub item</td>
+							<td class="arrow">→</td>
+							<td>• Lista não numerada<br>• Segundo item<br>..•
+								Sub item</td>
+						</tr>
+						<tr>
+							<td># Lista numerada<br># Segundo item<br>## Sub
+								item</td>
+							<td class="arrow">→</td>
+							<td>1. Lista numerada<br>2. Segundo item<br>2.1
+								Sub item</td>
+						</tr>
+
+						<!-- 
+					<tr>
+						<td>Link para [[outro conhecimento]]</td>
+						<td class="arrow">→</td>
+						<td>Link to <a
+							href="http://www.wikicreole.org/attach/CheatSheet/URL">wiki
+								page</a>
+						</td>
+					</tr>
+ -->
+						<tr>
+							<td>[[URL|nome do link]]</td>
+							<td class="arrow">→</td>
+							<td><a
+								href="http://www.wikicreole.org/attach/CheatSheet/URL">nome
+									do link</a></td>
+						</tr>
+
+						<tr>
+							<td>== Título grande<br>=== Título médio<br>====
+								Título pequeno</td>
+							<td class="arrow">→</td>
+							<td><span style="font-size: 120%; font-weight: bold;">
+									Título grande</span><br> <span
+								style="font-size: 110%; font-weight: bold;">Título médio</span><br>
+								<span style="font-size: 100%; font-weight: bold;">Título
+									pequeno</span></td>
+						</tr>
+
+						<tr>
+							<td>Não<br> quebrar a linha!<br> <br>Use uma
+								linha vazia</td>
+							<td class="arrow">→</td>
+							<td>Não quebrar a linha!<br> <br>Use uma linha
+								vazia</td>
+						</tr>
+						<tr>
+							<td>Quebra de linha\\forçada<br></td>
+							<td class="arrow">→</td>
+							<td>Quebra de linha<br>forçada</td>
+						</tr>
+						<tr>
+							<td>Linha horizontal:<br>----</td>
+							<td class="arrow">→</td>
+							<td>Linha horizontal:
+								<hr></td>
+						</tr>
+						<tr>
+							<td>{{imagem.jpg|título}}</td>
+							<td class="arrow">→</td>
+							<td>Imagem com título</td>
+						</tr>
+						<tr>
+							<td>|=|=tabela|=cabeçalho|<br>|a|tabela|linha|<br>|b|tabela|linha|</td>
+							<td class="arrow">→</td>
+							<td>Tabela</td>
+						</tr>
+						<tr>
+							<td>{{{<br>== [[não|formatar]]<br />}}}</td>
+							<td class="arrow">→</td>
+							<td>== [[não|formatar]]:</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
