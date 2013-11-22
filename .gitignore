@@ -6,4 +6,8 @@ target/
 .DS_Store/
 .project/
 .DS_Store
-
+/tmp
+/test-output
+/.settings
+.project
+.classpath
