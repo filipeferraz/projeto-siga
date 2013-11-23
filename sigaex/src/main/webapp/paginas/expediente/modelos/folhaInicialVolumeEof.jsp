@@ -58,7 +58,7 @@
 		  <br/>
 		  <table  width="100%" cellpadding="0" cellspacing="1" border="1" style="border-color: black; border-spacing: 0px; border-collapse: collapse">
 		    <tr> 
-			   <td widht="15%" align="left" style="font-size: 10" style="border-collapse: collapse; border-color: black;" rowspan="2" ><b>&nbsp CONTRATADA</b><br/></td>  
+			   <td width="15%" align="left" style="font-size: 10" style="border-collapse: collapse; border-color: black;" rowspan="2" ><b>&nbsp CONTRATADA</b><br/></td>  
 			   <td width="67%" style="border-collapse: collapse; border-color: black;" rowspan="2">&nbsp</td>
 			   <td width="12%" style="font-size: 8pt; border-collapse: collapse; border-color: black;" align="center" valign="middle">% de Retenção<br/>de Tributos<br/>Federais</td>
 			   <td width="8%"  align="center" style="border-collapse: collapse; border-color: black;">Fls.</td>
